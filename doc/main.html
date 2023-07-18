@@ -9,13 +9,13 @@
     <!-- <meta itemprop="pubNumber" content="9999" /> -->
     <meta itemprop="pubState" content="draft" />
     <meta itemprop="pubDateTime" content="2099-01-01" />
-    <title>Standards document URI specification</title>
+    <title>Persistent URIs for standards document</title>
   </head>
   <body>
 
     <section id="sec-introduction">
-      <p>This document specifies Uniform Resource Identifiers (URIs) for
-      documents developed by the SMPTE Standards Community. The URIs are intended to:</p>
+      <p>This document specifies URIs for documents developed by the SMPTE
+      Standards Community. The URIs are intended to:</p>
 
       <ul>
         <li>persistently identify documents; and</li>
@@ -27,11 +27,11 @@
       documents.</p>
 
       <table id="tab-example-uris">
-        <caption>Sample URIs as defined by this document.</caption>
+        <caption>Sample URIs</caption>
         <thead>
           <tr>
             <th>URI</th>
-            <th>Resource identified by the URI</th>
+            <th>Standards document(s) identified by the URI</th>
           </tr>
         </thead>
         <tbody>
@@ -72,8 +72,8 @@
     </section>
 
     <section id="sec-scope">
-      <p>This document specifies URIs to identify and retrieve approved SMPTE
-      standards documents.</p>
+      <p>This document specifies URIs intended to persistently identify and
+      retrieve SMPTE standards documents.</p>
     </section>
 
     <section id="sec-normative-references">
@@ -108,6 +108,10 @@
 
         <dt>publication version</dt>
         <dd>most recent version that has reached the publication stage</dd>
+
+        <dt>Uniform Resource Identifier</dt>
+        <dt>URI</dt>
+        <dd><a href="#bib-rfc-3986"></a></dd>
       </dl>
     </section>
 
@@ -117,7 +121,8 @@
       <section id="sec-uri-def">
         <h3>URI</h3>
 
-        <p>URIs shall conform to <a href="#bib-rfc-3986"></a>.</p>
+        <p>URI syntax is specified using the grammar specified at <a
+        href="#bib-rfc-7405"></a>.</p>
 
         <p>Trailing slashes are significant in URIs.</p>
 
@@ -132,9 +137,6 @@
         <code>https://pub.smpte.org/doc/st428-12/latest/</code> is not
         equivalent to the URI
         <code>https://pub.smpte.org/doc/st428-12/LATEST/</code>.</p>
-
-        <p>URI syntax is specified using the grammar specified at <a
-        href="#bib-rfc-7405"></a>.</p>
 
       </section>
 
@@ -198,7 +200,7 @@
 
 
       <section id="sec-latest-pubs">
-        <h3>Latest Publication version</h3>
+        <h3>Latest publication version</h3>
 
         <p>The <code>latest-pub</code> URI resolves to the most recent
         Publication version of the standard document whose short name is
@@ -220,7 +222,7 @@
       </section>
 
       <section id="sec-version">
-        <h3>Specific named version</h3>
+        <h3>Named version</h3>
 
         <p>The <code>specific-version</code> URI resolves to the specific
         version <code>version-short-name</code> of the standard document whose short
@@ -231,6 +233,5 @@
       </section>
 
     </section>
-
   </body>
 </html>
