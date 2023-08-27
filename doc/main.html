@@ -36,41 +36,29 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>https://pub.smpte.org/version/st429-2/20230716-cd/</code></td>
+            <td><code>https://pub.smpte.org/doc/st429-2/20230716-cd/</code></td>
             <td>Committee Draft of SMPTE ST 429-2 approved on July 16, 2023</td>
           </tr>
           <tr>
-            <td><code>https://pub.smpte.org/version/st429-2/20230110-wd/</code></td>
+            <td><code>https://pub.smpte.org/doc/st429-2/20230110-wd/</code></td>
             <td>Working Draft of SMPTE ST 429-2 approved on January 10, 2023</td>
           </tr>
           <tr>
-            <td><code>https://pub.smpte.org/version/st429-2/</code></td>
+            <td><code>https://pub.smpte.org/doc/st429-2/</code></td>
             <td>List of all versions of SMPTE ST 429-2</td>
+          </tr>
+          <tr>
+            <td><code>https://pub.smpte.org/doc/</code></td>
+            <td>List of all documents</td>
           </tr>
           <tr>
             <td><code>https://pub.smpte.org/pub/st429-2/</code></td>
             <td>Most recent publication version of SMPTE ST 429-2</td>
           </tr>
           <tr>
-            <td><code>https://pub.smpte.org/pub/st429/</code></td>
-            <td>Most recent publication version of all parts of SMPTE ST 429</td>
-          </tr>
-          <tr>
-            <td><code>https://pub.smpte.org/pub/</code></td>
-            <td>List of the most recent publication versions of all documents</td>
-          </tr>
-          <tr>
             <td><code>https://pub.smpte.org/latest/st429-2/</code></td>
             <td>Most recent version of SMPTE ST 429-2, which is not necessarily
             at publication stage</td>
-          </tr>
-          <tr>
-            <td><code>https://pub.smpte.org/latest/st429/</code></td>
-            <td>Most recent version of all parts of SMPTE ST 429-2</td>
-          </tr>
-          <tr>
-            <td><code>https://pub.smpte.org/latest/</code></td>
-            <td>List of the most recent version of all documents</td>
           </tr>
           <tr>
             <td><code>https://pub.smpte.org/package/st429-2/20230110-wd/</code></td>
@@ -181,124 +169,72 @@
       </section>
     </section>
 
+    <section id="sec-doc-latest">
+      <h2>Most recent version of a document</h2>
 
-    <section id="sec-latest">
-      <h2>Most recent version</h2>
+      <p>The <code>latest-version</code> URI resolves to the most recent version
+      of the standard document whose short name is
+      <code>document-short-name</code>.</p>
 
-      <section id="sec-all-latest">
-        <h3>All documents</h3>
+<pre>latest-version = prefix %s"/latest/" document-short-name "/" </pre>
 
-        <p>The <code>all-latest</code> URI resolves to a resource that lists the
-        most recent version of all documents.</p>
+      <p class="example"><code>https://pub.smpte.org/latest/st429-2/</code></p>
+    </section>
 
-<pre>all-latest = prefix %s"/latest/"</pre>
 
-        <p class="example"><code>https://pub.smpte.org/latest/</code></p>
-      </section>
+    <section id="sec-doc-pub">
+      <h2>Most recent publication version of a document</h2>
 
-      <section id="sec-all-parts-latest">
-        <h3>All parts of a document</h3>
+      <p>The <code>latest-pub</code> URI resolves to the most recent
+      publication version of the standard document whose short name is
+      <code>document-short-name</code>.</p>
 
-        <p>The <code>latest-all-parts</code> URI resolves to a resource that
-        lists the most recent version of all parts of the document with type
-        <code>type</code> and root number <code>root-number</code>.</p>
+      <pre>latest-pub = prefix %s"/pub/" document-short-name "/" </pre>
 
-<pre>latest-all-parts = prefix %s"/latest/" type root-number "/"</pre>
-
-        <p class="example"><code>https://pub.smpte.org/latest/st429/</code></p>
-      </section>
-
-      <section id="sec-part-latest">
-        <h3>Specific part of a document</h3>
-
-        <p>The <code>latest-part</code> URI resolves to the most recent version
-        of the standard document whose short name is
-        <code>document-short-name</code>.</p>
-
-<pre>latest-part = prefix %s"/latest/" document-short-name "/" </pre>
-
-        <p class="example"><code>https://pub.smpte.org/latest/st429-2/</code></p>
-
-        <p class="note">If the document has no parts, <code>latest-part</code>
-        is equal to <code>latest-all-parts</code> and thus resolve to the same
-        resource.</p>
-      </section>
-
+      <p class="example"><code>https://pub.smpte.org/pub/st429-2/</code></p>
 
     </section>
 
-    <section id="sec-all">
-      <h2>Most recent publication version</h2>
+    <section id="sec-all-docs">
+      <h2>All documents</h2>
 
-      <section id="sec-all-pub">
-        <h3>All documents</h3>
+      <p>The <code>all-docs</code> URI resolves to a resource that lists all
+      standard documents.</p>
 
-        <p>The <code>all-pub</code> URI resolves to a resource that lists the
-        most recent publication version of all documents.</p>
+      <pre>all-docs = prefix %s"/doc/"</pre>
 
-        <pre>all-pub = prefix %s"/pub/"</pre>
-
-        <p class="example"><code>https://pub.smpte.org/pub/</code></p>
-      </section>
-
-      <section id="sec-all-parts-pub">
-        <h3>All parts of a document</h3>
-
-        <p>The <code>all-parts-pub</code> URI resolves to a resource that lists
-        the most recent publication version of all parts of the document with
-        type <code>type</code> and root number <code>root-number</code>.</p>
-
-        <pre>all-parts-pub = prefix %s"/pub/" type root-number "/"</pre>
-
-        <p class="example"><code>https://pub.smpte.org/pub/st429/</code></p>
-      </section>
-
-      <section id="sec-latest-pubs">
-        <h3>Specific part of a document</h3>
-
-        <p>The <code>part-pub</code> URI resolves to the most recent
-        publication version of the standard document whose short name is
-        <code>document-short-name</code>.</p>
-
-        <pre>part-pub = prefix %s"/pub/" document-short-name "/" </pre>
-
-        <p class="example"><code>https://pub.smpte.org/pub/st429-2/</code></p>
-
-        <p class="note">If the document has no parts, <code>part-pub</code> is
-        equal to <code>all-parts-pub</code> and thus resolve to the same
-        resource.</p>
-      </section>
+      <p class="example"><code>https://pub.smpte.org/doc/</code></p>
 
     </section>
 
     <section id="sec-all-versions">
-      <h2>All versions</h2>
+      <h2>All versions of a document</h2>
 
       <p>The <code>all-versions</code> URI resolves to a resource that lists all
       versions of the standard document whose short name is
       <code>document-short-name</code>.</p>
 
-      <pre>all-versions = prefix %s"/version/" document-short-name "/"</pre>
+      <pre>all-versions = prefix %s"/doc/" document-short-name "/"</pre>
 
-      <p class="example"><code>https://pub.smpte.org/version/st429-2/</code></p>
+      <p class="example"><code>https://pub.smpte.org/doc/st429-2/</code></p>
 
     </section>
 
     <section id="sec-doc-version">
-      <h2>Specific version</h2>
+      <h2>Specific version of a document</h2>
 
       <p>The <code>specific-version</code> URI resolves to the specific
       version <code>version-short-name</code> of the document whose short
       name is <code>document-short-name</code>.</p>
 
-      <pre>specific-version = prefix %s"/version/" document-short-name "/" version-short-name "/"</pre>
+      <pre>specific-version = prefix %s"/doc/" document-short-name "/" version-short-name "/"</pre>
 
-      <p class="example"><code>https://pub.smpte.org/version/st429-2/20230716-cd/</code></p>
+      <p class="example"><code>https://pub.smpte.org/doc/st429-2/20230716-cd/</code></p>
 
     </section>
 
     <section id="sec-package-version">
-      <h2>Package of a specific version</h2>
+      <h2>Package of a specific version of a document</h2>
 
       <p>The <code>specific-version-package</code> URI resolves to a single
       archive file that contains all files that comprise the specific version
