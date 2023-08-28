@@ -48,6 +48,10 @@
             <td>List of all versions of SMPTE ST 429-2</td>
           </tr>
           <tr>
+            <td><code>https://pub.smpte.org/doc/429/</code></td>
+            <td>List of all the documents with the root number 429</td>
+          </tr>
+          <tr>
             <td><code>https://pub.smpte.org/doc/</code></td>
             <td>List of all documents</td>
           </tr>
@@ -217,6 +221,18 @@
       <pre>all-versions = prefix %s"/doc/" document-short-name "/"</pre>
 
       <p class="example"><code>https://pub.smpte.org/doc/st429-2/</code></p>
+
+    </section>
+
+    <section id="sec-all-parts">
+      <h2>All documents with the same root number</h2>
+
+      <p>The <code>all-parts</code> URI resolves to a resource that lists all
+      documents whose root number is <code>root-number</code>.</p>
+
+      <pre>all-parts = prefix %s"/doc/" root-number "/"</pre>
+
+      <p class="example"><code>https://pub.smpte.org/doc/429/</code></p>
 
     </section>
 
