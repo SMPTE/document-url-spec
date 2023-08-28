@@ -44,21 +44,30 @@
             <td>Working Draft of SMPTE ST 429-2 approved on January 10, 2023</td>
           </tr>
           <tr>
-            <td><code>https://pub.smpte.org/doc/st429-2/pub/</code></td>
-            <td>Most recent publication version of SMPTE ST 429-2</td>
-          </tr>
-          <tr>
-            <td><code>https://pub.smpte.org/doc/st429-2/latest/</code></td>
-            <td>Most recent version of SMPTE ST 429-2, which is not necessarily
-            at publication stage</td>
-          </tr>
-          <tr>
             <td><code>https://pub.smpte.org/doc/st429-2/</code></td>
             <td>List of all versions of SMPTE ST 429-2</td>
           </tr>
           <tr>
+            <td><code>https://pub.smpte.org/doc/429/</code></td>
+            <td>List of all the documents with the root number 429</td>
+          </tr>
+          <tr>
             <td><code>https://pub.smpte.org/doc/</code></td>
             <td>List of all documents</td>
+          </tr>
+          <tr>
+            <td><code>https://pub.smpte.org/pub/st429-2/</code></td>
+            <td>Most recent publication version of SMPTE ST 429-2</td>
+          </tr>
+          <tr>
+            <td><code>https://pub.smpte.org/latest/st429-2/</code></td>
+            <td>Most recent version of SMPTE ST 429-2, which is not necessarily
+            at publication stage</td>
+          </tr>
+          <tr>
+            <td><code>https://pub.smpte.org/package/st429-2/20230110-wd/</code></td>
+            <td>Working Draft of SMPTE ST 429-2 approved on January 10, 2023, as
+            a single ZIP file</td>
           </tr>
         </tbody>
       </table>
@@ -67,13 +76,13 @@
       <code>GET</code> request to the URI will return the one or more documents
       identified by the URI. For example, a <code>GET</code> request to
       <code>https://pub.smpte.org/doc/</code> returns an HTML document that
-      contains the list of all available standards document.</p>
+      contains the list of all available document.</p>
 
     </section>
 
     <section id="sec-scope">
       <p>This document specifies URIs intended to persistently identify and
-      retrieve SMPTE standards documents.</p>
+      retrieve documents.</p>
     </section>
 
     <section id="sec-normative-references">
@@ -98,7 +107,7 @@
     <section id="sec-terms-and-definitions">
 
       <dl id="terms-int-defs">
-        <dt>standards document</dt>
+        <dt>document</dt>
         <dd>collection of versions with the same document type, number and part</dd>
 
         <dt>version</dt>
@@ -138,6 +147,14 @@
         equivalent to the URI
         <code>https://pub.smpte.org/doc/st428-12/LATEST/</code>.</p>
 
+        <p>Unless specified otherwise, an HTTPS <code>GET</code> request to a
+        URI shall offer to return an HTML document (<code>text/html</code>) and
+        may offer return other media types.</p>
+
+        <p>Unless specified otherwise, if a URI resolves to a specific version
+        of a document and the main element of the version is only available as a
+        PDF document, then the HTML document embeds the PDF document.</p>
+
       </section>
 
       <section id="sec-html-def">
@@ -146,91 +163,108 @@
         <p>HTML documents shall conform to <a href="#bib-HTML-5"></a>.</p>
       </section>
 
+      <section id="sec-prefix">
+        <h3>Publication prefix</h3>
+
+        <p>The following <code>prefix</code> string is used by URI
+        definitions:</p>
+
+        <pre>prefix = "https://pub.smpte.org" </pre>
+      </section>
     </section>
 
-    <section id="sec-prefix">
-      <h2>Publication prefix</h2>
+    <section id="sec-doc-latest">
+      <h2>Most recent version of a document</h2>
 
-      <p>The following <code>prefix</code> string is used by URI
-      definitions:</p>
+      <p>The <code>latest-version</code> URI resolves to the most recent version
+      of the standard document whose short name is
+      <code>document-short-name</code>.</p>
 
-      <pre>prefix = "https://pub.smpte.org/" %s"doc" </pre>
+<pre>latest-version = prefix %s"/latest/" document-short-name "/" </pre>
+
+      <p class="example"><code>https://pub.smpte.org/latest/st429-2/</code></p>
+    </section>
+
+
+    <section id="sec-doc-pub">
+      <h2>Most recent publication version of a document</h2>
+
+      <p>The <code>latest-pub</code> URI resolves to the most recent
+      publication version of the standard document whose short name is
+      <code>document-short-name</code>.</p>
+
+      <pre>latest-pub = prefix %s"/pub/" document-short-name "/" </pre>
+
+      <p class="example"><code>https://pub.smpte.org/pub/st429-2/</code></p>
 
     </section>
 
-    <section id="sec-all">
-      <h2>All standards document</h2>
+    <section id="sec-all-docs">
+      <h2>All documents</h2>
 
       <p>The <code>all-docs</code> URI resolves to a resource that lists all
-      standards documents.</p>
+      standard documents.</p>
 
-      <pre>all-docs = prefix "/"</pre>
+      <pre>all-docs = prefix %s"/doc/"</pre>
 
-      <p>The resource shall be available as an HTML document
-      (<code>text/html</code>) and may be available in other media types.</p>
+      <p class="example"><code>https://pub.smpte.org/doc/</code></p>
 
     </section>
 
     <section id="sec-all-versions">
-      <h2>All versions of a standards document</h2>
+      <h2>All versions of a document</h2>
 
       <p>The <code>all-versions</code> URI resolves to a resource that lists all
       versions of the standard document whose short name is
       <code>document-short-name</code>.</p>
 
-      <pre>all-versions = prefix "/" document-short-name "/"</pre>
+      <pre>all-versions = prefix %s"/doc/" document-short-name "/"</pre>
 
-      <p>The resource shall be available as an HTML document
-      (<code>text/html</code>) and may be available in other media types.</p>
+      <p class="example"><code>https://pub.smpte.org/doc/st429-2/</code></p>
+
+    </section>
+
+    <section id="sec-all-parts">
+      <h2>All documents with the same root number</h2>
+
+      <p>The <code>all-parts</code> URI resolves to a resource that lists all
+      documents whose root number is <code>root-number</code>.</p>
+
+      <pre>all-parts = prefix %s"/doc/" root-number "/"</pre>
+
+      <p class="example"><code>https://pub.smpte.org/doc/429/</code></p>
 
     </section>
 
     <section id="sec-doc-version">
-      <h2>Specific version of a standards document</h2>
+      <h2>Specific version of a document</h2>
 
-      <section id="sec-doc-version-general">
-        <h3>General</h3>
+      <p>The <code>specific-version</code> URI resolves to the specific
+      version <code>version-short-name</code> of the document whose short
+      name is <code>document-short-name</code>.</p>
 
-        <p>Resources for a specific version of a standards document shall be
-        available as an HTML document (<code>text/html</code>) and may be
-        available in other media types. If the main element of the version is
-        only available as a PDF document, then the HTML document embeds the PDF
-        document.</p>
-      </section>
+      <pre>specific-version = prefix %s"/doc/" document-short-name "/" version-short-name "/"</pre>
 
+      <p class="example"><code>https://pub.smpte.org/doc/st429-2/20230716-cd/</code></p>
 
-      <section id="sec-latest-pubs">
-        <h3>Latest publication version</h3>
+    </section>
 
-        <p>The <code>latest-pub</code> URI resolves to the most recent
-        Publication version of the standard document whose short name is
-        <code>document-short-name</code>.</p>
+    <section id="sec-package-version">
+      <h2>Package of a specific version of a document</h2>
 
-        <pre>latest-pub = prefix "/" document-short-name %s"/pub/" </pre>
+      <p>The <code>specific-version-package</code> URI resolves to a single
+      archive file that contains all files that comprise the specific version
+      <code>version-short-name</code> of the document whose short name is
+      <code>document-short-name</code>.</p>
 
-      </section>
+      <pre>specific-version-package = prefix %s"/package/" document-short-name "/" version-short-name "/"</pre>
 
-      <section id="sec-latest">
-        <h3>Latest version</h3>
+      <p class="example"><code>https://pub.smpte.org/package/st429-2/20230716-cd/</code></p>
 
-        <p>The <code>latest-version</code> URI resolves to the most recent
-        version of the standard document whose short name is
-        <code>document-short-name</code>, whatever the stage of the version.</p>
-
-        <pre>latest-version = prefix "/" document-short-name %s"/latest/"</pre>
-
-      </section>
-
-      <section id="sec-version">
-        <h3>Named version</h3>
-
-        <p>The <code>specific-version</code> URI resolves to the specific
-        version <code>version-short-name</code> of the standard document whose short
-        name is <code>document-short-name</code>.</p>
-
-        <pre>specific-version = prefix "/" document-short-name "/" version-short-name "/"</pre>
-
-      </section>
+      <p>An HTTPS <code>GET</code> request to the
+      <code>specific-version-package</code> URI shall offer to return an ZIP
+      archive document (<code>application/zip</code>) and may offer return other
+      media types.</p>
 
     </section>
   </body>
