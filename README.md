@@ -1,6 +1,8 @@
-# SMPTE standards document URL specification
+# SMPTE  _AG-29_ - _Document Library: URL Spec (Persistent URIs)_
 
 This repository is *private*.
+
+Specification for the SMPTE document URLs
 
 * [Latest version](https://doc.smpte-doc.org/document-url-spec/main/)
 * [Latest version (all artifacts)](https://doc.smpte-doc.org/document-url-spec/main/pub-artifacts.html)
