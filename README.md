@@ -1,6 +1,6 @@
 # SMPTE  _AG-29_ - _Document Library: URL Spec (Persistent URIs)_
 
-This repository is *private*.
+This repository is *public*.
 
 Specification for the SMPTE document URLs
 
